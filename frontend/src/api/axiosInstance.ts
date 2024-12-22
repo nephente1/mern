@@ -7,8 +7,8 @@ const getUser = () => {
 
 // Tworzymy instancję axios z globalnymi ustawieniami
 const axiosInstance = axios.create({
-  // baseURL: `http://localhost:3000/api` //dev
-  baseURL: 'https://mern-backend-xbfj.onrender.com/api' //prod
+  baseURL: `http://localhost:3000/api` //dev
+  // baseURL: 'https://mern-backend-xbfj.onrender.com/api' //prod
 });
 
 // Ustawiamy token w nagłówkach dla każdej wysyłanej prośby, do tego posłuży interceptor z Axiosa

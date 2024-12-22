@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const validator = require('validator');
 
 const Schema = mongoose.Schema
 
@@ -9,7 +10,8 @@ const workoutSchema = new Schema({
   },
   time: {
     type: String,
-    required: true
+    required: true,
+    validate: {validator: validator.isTime, message: 'Time should be filled in format HH:MM or 00:00'}
   },
   distance: {
     type: Number,
@@ -24,5 +26,6 @@ const workoutSchema = new Schema({
     required: false
   }
 }, { timestamps: true })
+
 
 module.exports = mongoose.model('Workout', workoutSchema)

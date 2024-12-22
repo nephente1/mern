@@ -1,5 +1,6 @@
 const Workout = require('../models/workoutModel')
 const mongoose = require('mongoose')
+const validator = require('validator');
 
 // get all workouts
 const getWorkouts = async (req, res) => {
@@ -53,6 +54,9 @@ const createWorkout = async (req, res) => {
     const workout = await Workout.create({title, distance, time, user_id, date})
     res.status(200).json(workout)
   } catch (error) {
+    if (!validator.isTime(time)) {
+      return res.status(400).json({error: 'Time should be filled in format HH:MM or 00:00'})
+    }
     res.status(400).json({error: error.message})
   }
 }
